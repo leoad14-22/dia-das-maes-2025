@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz Dia das Mães</title>
+  <style>
+    :root {
+      --fundo-claro: #e0f7fa;
+      --fundo-medio: #b2ebf2;
+      --destaque: #ff9800;
+      --texto: #37474f;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--fundo-claro);
+      color: var(--texto);
+      line-height: 1.6;
+      position: relative;
+    }
+
+    header {
+      background-color: var(--fundo-medio);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      color: var(--destaque);
+      margin: 0;
+    }
+
+    .hero {
+      padding: 60px 20px;
+      background: linear-gradient(to bottom, var(--fundo-claro), #ffffff);
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.1em;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .titulo-com-seta {
+      cursor: pointer;
+      display: inline-block;
+      transition: color 0.3s ease;
+    }
+
+    .titulo-com-seta:hover {
+      color: var(--destaque);
+    }
+
+    .seta {
+      display: inline-block;
+      transition: transform 0.3s ease;
+      margin-right: 10px;
+      font-size: 1.2em;
+      color: var(--destaque);
+    }
+
+    .section p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1em;
+    }
+
+    .extra-homenagem {
+      margin-top: 30px;
+      background-color: rgba(255, 255, 255, 0.6);
+      padding: 25px;
+      border-left: 6px solid var(--destaque);
+      border-radius: 8px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1em;
+      color: var(--texto);
+      transition: max-height 0.5s ease, opacity 0.5s ease;
+      overflow: hidden;
+    }
+
+    .extra-homenagem h4 {
+      margin-bottom: 15px;
+      color: var(--destaque);
+      font-size: 1.3em;
+    }
+
+    .oculto {
+      max-height: 0;
+      opacity: 0;
+      padding: 0 25px;
+      border: none;
+    }
+
+    .expandido {
+      max-height: 500px;
+      opacity: 1;
+      padding: 25px;
+      border-left: 6px solid var(--destaque);
+    }
+
+    .heart-button-container {
+      text-align: center;
+      margin: 60px 0;
+    }
+
+    .heart-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+      z-index: 1;
+    }
+
+    .heart-icon {
+      width: 100px;
+      height: 100px;
+      transition: transform 0.3s ease;
+    }
+
+    .heart-icon path {
+      fill: var(--destaque);
+    }
+
+    .btn-text {
+      margin-top: 10px;
+      color: var(--destaque);
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .heart-button:hover .heart-icon {
+      animation: pulsar 0.6s infinite;
+    }
+
+    @keyframes pulsar {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    footer {
+      background-color: var(--fundo-medio);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #546e7a;
+    }
+
+  
+    .floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .floating-hearts .heart {
+      position: absolute;
+      bottom: -50px;
+      width: 20px;
+      height: 20px;
+      background-color: var(--destaque);
+      transform: rotate(45deg);
+      animation: floatHeart 10s linear infinite;
+      opacity: 0.7;
+    }
+
+    .floating-hearts .heart::before,
+    .floating-hearts .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: var(--destaque);
+      border-radius: 50%;
+    }
+
+    .floating-hearts .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .floating-hearts .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .floating-hearts .heart:nth-child(1) {
+      left: 20%;
+      animation-delay: 0s;
+      animation-duration: 8s;
+    }
+
+    .floating-hearts .heart:nth-child(2) {
+      left: 40%;
+      animation-delay: 2s;
+      animation-duration: 10s;
+    }
+
+    .floating-hearts .heart:nth-child(3) {
+      left: 60%;
+      animation-delay: 4s;
+      animation-duration: 9s;
+    }
+
+    .floating-hearts .heart:nth-child(4) {
+      left: 80%;
+      animation-delay: 1s;
+      animation-duration: 11s;
+    }
+
+    .floating-hearts .heart:nth-child(5) {
+      left: 10%;
+      animation-delay: 3s;
+      animation-duration: 12s;
+    }
+
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2em;
+      }
+      .hero h2 {
+        font-size: 1.6em;
+      }
+      .hero p, .section p {
+        font-size: 1em;
+      }
+      .section h3 {
+        font-size: 1.5em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h2 {
+        font-size: 1.4em;
+      }
+      header h1 {
+        font-size: 1.8em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="floating-hearts">
+  <span class="heart"></span>
+  <span class="heart"></span>
+  <span class="heart"></span>
+  <span class="heart"></span>
+  <span class="heart"></span>
+</div>
+
+<header>
+  <h1>Feliz Dia das Mães</h1>
+</header>
+
+<section class="hero">
+  <h2>Para a mulher mais especial da nossa vida</h2>
+  <p>Que o seu dia seja cheio de amor, carinho e momentos inesquecíveis. Você é o coração da família.</p>
+</section>
+
+<section class="section">
+  <h3 class="titulo-com-seta" onclick="toggleHomenagem()">
+    <span class="seta">➜</span> Uma Homenagem às Mães
+  </h3>
+  <p>
+    Mãe é abrigo e é farol. É o silêncio que conforta e a voz que encoraja.<br>
+    É quem ensina com o olhar e abraça com o coração.<br>
+    É o colo que cura, a presença que acalma, o amor que nunca se mede.<br><br>
+    Neste Dia das Mães, celebramos não apenas quem nos deu a vida,  
+    mas quem a torna mais bonita todos os dias com sua força, dedicação e ternura.<br><br>
+    Que cada mãe sinta-se amada, valorizada e lembrada — hoje e sempre.
+  </p>
+
+  <div class="extra-homenagem oculto" id="blocoExtra">
+    <h4>➜ Um pouco mais sobre o que é ser Mãe</h4>
+    <p>
+      Ser mãe é estar presente mesmo ausente. É intuir, perceber, proteger, ensinar.  
+      É dar colo mesmo cansada, sorrir com os olhos, e fazer do abraço um lar.<br><br>
+      É dar o melhor de si em silêncio, plantar amor todos os dias e regar com esperança.<br>
+      Neste dia, celebramos cada gesto, cada sacrifício e todo esse amor infinito.
+    </p>
+  </div>
+</section>
+
+<section class="heart-button-container">
+  <button class="heart-button" onclick="lançarConfete()">
+    <svg viewBox="0 0 512 512" class="heart-icon" xmlns="http://www.w3.org/2000/svg">
+      <path d="M471.7 73.4c-54.5-46.4-136-38.3-186.4 13.7L256 117.7l-29.3-30.6C176.3 35.1 94.8 27 40.3 73.4-18.5 126.2-10.6 218.2 43 272.6l193 199.8c12.5 13 32.9 13 45.4 0l193-199.8c53.6-54.4 61.5-146.4 2.7-199.2z"/>
+    </svg>
+    <span class="btn-text">Abrir Presente</span>
+  </button>
+</section>
+<section class="section">
+  <h3>💬 Comentários</h3>
+  <div id="disqus_thread"></div>
+</section>
+
+<footer>
+  &copy; 2025 com carinho. Todos os direitos reservados.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+  function lançarConfete() {
+    confetti({
+      particleCount: 150,
+      spread: 80,
+      origin: { y: 0.6 }
+    });
+  }
+
+  function toggleHomenagem() {
+    const bloco = document.getElementById("blocoExtra");
+    const seta = document.querySelector(".seta");
+
+    if (bloco.classList.contains("oculto")) {
+      bloco.classList.remove("oculto");
+      bloco.classList.add("expandido");
+      seta.style.transform = "rotate(90deg)";
+    } else {
+      bloco.classList.remove("expandido");
+      bloco.classList.add("oculto");
+      seta.style.transform = "rotate(0deg)";
+    }
+  }
+</script>
+
+</body>
+</html>
