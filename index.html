@@ -330,11 +330,36 @@
     </svg>
     <span class="btn-text">Abrir Presente</span>
   </button>
-</section>
-<section class="section">
-  <h3>💬 Comentários</h3>
-  <div id="disqus_thread"></div>
-</section>
+ <section class="comentarios">
+        <h3>💬 O que você acha do nosso site? Deixe seu comentário!</h3>
+        <div id="disqus_thread"></div>  <!-- Aqui será o local dos comentários -->
+        
+        <!-- Exibindo o contador de comentários -->
+        <div id="disqus_count"></div>
+    </section>
+
+    <!-- Script para integrar Disqus -->
+    <script>
+        var disqus_config = function () {
+            this.page.url = window.location.href;  // URL da página atual
+            this.page.identifier = "diadasmaes2025"; // Identificador único para a página
+        };
+
+        (function() { // Não edite abaixo desta linha
+            var d = document, s = d.createElement('script');
+            s.src = 'https://https-leoad14-22-github-io-dia-das-maes-2025.disqus.com/embed.js'; // Substitua pelo seu nome do site no Disqus
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+    <!-- Script para carregar o contador de comentários -->
+    <script id="dsq-count-scr" src="//https-leoad14-22-github-io-dia-das-maes-2025.disqus.com/count.js" async></script>
+
+    <noscript>
+        Please enable JavaScript to view the 
+        <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
 
 <footer>
   &copy; 2025 com carinho. Todos os direitos reservados.
